@@ -1,9 +1,9 @@
-import { Button, Row, Col, Select, Spin } from "antd"; 
-import { SearchOutlined } from "@ant-design/icons"; 
-import { useState, useEffect, useRef } from "react"; 
+import { Button, Row, Col, Select, Spin } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux"; // 引入 Redux 的 useDispatch hook
 import anime from "animejs"; // 引入 anime.js 動畫庫
-import dayjs from "dayjs"; 
+import dayjs from "dayjs";
 import { setWeatherData } from "../store/reducers"; // 引入 Redux action
 import WeatherCard from "../components/WeatherCard"; // 引入自訂的 WeatherCard 元件
 import * as request from "../request/api"; // 引入自訂的 API 請求函式
@@ -48,6 +48,7 @@ const WeatherPage = () => {
 
     const getData = async () => {
         setPageLoading(true);
+        dispatch(setWeatherData({}));
         // 觸發動畫效果
         const animation = anime({
             targets: elementRef.current,
