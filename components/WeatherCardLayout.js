@@ -27,9 +27,21 @@ const WeatherCardLayout = (props) => {
     return (
         <Col xl={8} md={12} xs={24} align="center">
             <Spin spinning={cardLoading} tip="Loading..." style={{ marginTop: "5%" }}>
-                <Card className="highlight-card" style={{ borderColor: "black" }} bodyStyle={{ height: 450, width: 330, padding: 5 }}>
-                    <strong style={{ fontSize: 24 }}>{`${currentDate} ${dayjs(currentDate).format("dddd")}`}</strong>
+                <Card
+                    className="highlight-card"
+                    style={{ borderColor: "black" }}
+                    bodyStyle={{
+                        height: 450,
+                        width: 330,
+                        padding: 10,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100%",
+                    }}
+                >
                     <WeatherCardWrapper>
+                        <strong style={{ fontSize: 24 }}>{`${currentDate} ${dayjs(currentDate).format("dddd")}`}</strong>
                         <Region>{region}</Region>
                         <Description>{wData["Wx"][0]}</Description>
                         <CurrentWeather>
@@ -57,7 +69,7 @@ const WeatherCardLayout = (props) => {
                             <StyleIcon>
                                 <WeatherIcon iconKey={"umbrella"} />
                             </StyleIcon>
-                            <WeatherElement>{wData["PoP12h"] !== " " ? `${wData["PoP12h"]}%` : "NULL"} </WeatherElement>
+                            <WeatherElement>{wData["PoP12h"] !== " " ? `${wData["PoP12h"]}%` : "-"} </WeatherElement>
                         </CurrentWeatherInfo>
                         <StyleSwitch>
                             <Switch

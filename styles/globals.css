@@ -96,12 +96,12 @@ a {
 
 @keyframes scale-animation {
     0% {
-        border: 5px solid transparent;  /* 起始狀態，使用透明邊框 */
+        outline: 3px solid transparent;  /* 起始狀態，使用透明邊框 */
     }
     50% {
-        border: 5px solid rgb(69, 144, 219);  /* 中間狀態，改變邊框顏色 */
+        outline: 3px solid rgb(69, 144, 219);  /* 中間狀態，改變邊框顏色 */
     }
     100% {
-        border: 5px solid transparent;  /* 結束狀態，使用透明邊框 */
+        outline: 3px solid transparent;  /* 結束狀態，使用透明邊框 */
     }
 }

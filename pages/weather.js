@@ -1,4 +1,4 @@
-import { Button, Row, Col, Select, Spin } from "antd";
+import { Button, Row, Col, Select, Spin, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -109,22 +109,20 @@ const WeatherPage = () => {
         <>
             <Spin spinning={pageLoading} tip="Loading..." size="large" style={{ marginTop: "15%" }}>
                 <Row gutter={[10, 10]} align="middle">
-                    <Col xl={4} md={8} xs={24} align="center">
-                        <strong style={{ fontSize: 20 }}>區域：</strong>
+                    <Col xl={18} md={18} xs={24}>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <strong style={{ fontSize: 20, marginRight: 10, flexShrink: 0 }}>區域：</strong>
+                            <Select
+                                showSearch
+                                size="large"
+                                defaultValue={regionSelect}
+                                onChange={(value) => setRegionSelect(value)}
+                                style={{ width: "100%" }}
+                                options={regionOptions}
+                            />
+                        </div>
                     </Col>
-                    <Col xl={16} md={16} xs={24}>
-                        <Select
-                            showSearch
-                            size="large"
-                            defaultValue={regionSelect}
-                            onChange={(value) => setRegionSelect(value)}
-                            style={{
-                                width: "100%",
-                            }}
-                            options={regionOptions}
-                        />
-                    </Col>
-                    <Col xl={4} md={24} xs={24}>
+                    <Col xl={6} md={6} xs={24}>
                         <Button
                             icon={<SearchOutlined />}
                             size="large"

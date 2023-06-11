@@ -7,7 +7,6 @@ import AppContent from "../components/AppContent";
 import store from "../store";
 
 const App = ({ Component, pageProps }) => {
-    // const pageLoading = useSelector((state) => state.pageLoading.pageLoading);
     return (
         <Provider store={store}>
             <Head>

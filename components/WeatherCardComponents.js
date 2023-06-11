@@ -61,8 +61,8 @@ export const WeatherElement = styled.div`
 
 export const StyleSwitch = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 25px;
     width: ${theme.width};
 `;

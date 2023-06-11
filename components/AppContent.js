@@ -26,7 +26,7 @@ const useWindowHeight = () => {
 const AppContent = ({ children }) => {
     const windowHeight = useWindowHeight();
     return (
-        <Content style={{ padding: "30px", minHeight: windowHeight, background: "#fff", color: "black", marginTop: 64 }}>
+        <Content style={{ padding: "15px", minHeight: windowHeight, background: "#fff", color: "black", marginTop: 64 }}>
             {children}
         </Content>
     );

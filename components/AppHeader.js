@@ -1,7 +1,10 @@
-import { Layout, Row, Col } from "antd";
+import { Layout, Space } from "antd";
 import Image from "next/image";
+import styled from "styled-components";
 import AppMenu from "./AppMenu";
 const { Header } = Layout;
+
+const HeaderStyle = { color: "white", fontSize: 22, fontWeight: "bold", marginLeft: 15 };
 
 const AppHeader = () => {
     return (
@@ -11,21 +14,18 @@ const AppHeader = () => {
                 height: 64,
                 width: "100%",
                 zIndex: 3000,
+                paddingInline: 20,
             }}
         >
-            <Row gutter={[10, 10]} align="middle">
-                <Col xl={4} md={4} xs={4} align="center">
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                        <Image src="/weather.svg" alt="logo" width={32} height={32} />
-                    </div>
-                </Col>
-                <Col xl={6} md={14} xs={14} align="left">
-                    <div style={{ color: "white", fontSize: 22, fontWeight: "bold", marginLeft: 15 }}>Weather App</div>
-                </Col>
-                <Col xl={14} md={6} xs={6} align="center">
+            <Space size={10}>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <Image src="/weather.svg" alt="logo" width={32} height={32} />
+                </div>
+                <div style={HeaderStyle}>Weather App</div>
+                <div style={HeaderStyle}>
                     <AppMenu />
-                </Col>
-            </Row>
+                </div>
+            </Space>
         </Header>
     );
 };
