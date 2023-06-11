@@ -86,22 +86,22 @@ a {
 
 .highlight-card:hover {
     /* 鼠標懸停時的樣式 */
-    animation-name: scale-animation;  /* 動畫名稱 */
-    animation-duration: 1.2s;  /* 動畫持續時間 */
-    animation-timing-function: ease-in-out;  /* 動畫的時間函數 */
-    animation-iteration-count: infinite;  /* 動畫播放次數 */
-    animation-fill-mode: forwards;  /* 動畫結束時的狀態 */
+    animation-name: scale-animation; /* 動畫名稱 */
+    animation-duration: 1.2s; /* 動畫持續時間 */
+    animation-timing-function: ease-in-out; /* 動畫的時間函數 */
+    animation-iteration-count: infinite; /* 動畫播放次數 */
+    animation-fill-mode: forwards; /* 動畫結束時的狀態 */
     z-index: 100;
 }
 
 @keyframes scale-animation {
     0% {
-        outline: 3px solid transparent;  /* 起始狀態，使用透明邊框 */
+        outline: 3px solid transparent; /* 起始狀態，使用透明邊框 */
     }
     50% {
-        outline: 3px solid rgb(69, 144, 219);  /* 中間狀態，改變邊框顏色 */
+        outline: 3px solid rgb(69, 144, 219); /* 中間狀態，改變邊框顏色 */
     }
     100% {
-        outline: 3px solid transparent;  /* 結束狀態，使用透明邊框 */
+        outline: 3px solid transparent; /* 結束狀態，使用透明邊框 */
     }
 }
