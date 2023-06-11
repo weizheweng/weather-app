@@ -1,15 +1,15 @@
-import { Button, Row, Col, Select, Spin, Space } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
-import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import anime from "animejs";
-import dayjs from "dayjs";
-import { setWeatherData } from "../store/reducers";
-import WeatherCard from "../components/WeatherCard";
-import * as request from "../request/api";
+import { Button, Row, Col, Select, Spin } from "antd"; 
+import { SearchOutlined } from "@ant-design/icons"; 
+import { useState, useEffect, useRef } from "react"; 
+import { useDispatch } from "react-redux"; // 引入 Redux 的 useDispatch hook
+import anime from "animejs"; // 引入 anime.js 動畫庫
+import dayjs from "dayjs"; 
+import { setWeatherData } from "../store/reducers"; // 引入 Redux action
+import WeatherCard from "../components/WeatherCard"; // 引入自訂的 WeatherCard 元件
+import * as request from "../request/api"; // 引入自訂的 API 請求函式
 
-const authorizationKey = process.env.NEXT_PUBLIC_AUTHORIZATION_KEY;
-const requestUrl = process.env.NEXT_PUBLIC_REQUEST_URL;
+const authorizationKey = process.env.NEXT_PUBLIC_AUTHORIZATION_KEY; // 取得環境變數授權金鑰
+const requestUrl = process.env.NEXT_PUBLIC_REQUEST_URL; // 取得環境變數請求 URL
 
 const regionData = [
     "基隆市",
@@ -34,14 +34,14 @@ const regionData = [
     "澎湖縣",
     "金門縣",
     "連江縣",
-];
+]; // 台灣所有縣市的array
 
 const WeatherPage = () => {
     const elementRef = useRef(null);
-    const [regionOptions, setRegionOptions] = useState([]);
-    const [regionSelect, setRegionSelect] = useState(regionData[0]);
-    const [cardHtml, setCardHtml] = useState();
-    const [pageLoading, setPageLoading] = useState(false);
+    const [regionOptions, setRegionOptions] = useState([]); // 區域選項狀態
+    const [regionSelect, setRegionSelect] = useState(regionData[0]); // 選擇的區域
+    const [cardHtml, setCardHtml] = useState(); // 天氣卡片內容狀態
+    const [pageLoading, setPageLoading] = useState(false); // 頁面載入狀態
     const dispatch = useDispatch();
 
     const currentDate = dayjs().isAfter(dayjs().set("hour", 6).startOf("hour")) ? dayjs() : dayjs().subtract(1, "day");
@@ -55,7 +55,7 @@ const WeatherPage = () => {
             duration: 2000,
             easing: "easeOutExpo",
         });
-
+        // 請求中央氣象局API
         const returnData = await request.getWeatherRecords(requestUrl, "GET", {
             Authorization: authorizationKey,
             locationName: regionSelect,
@@ -63,7 +63,7 @@ const WeatherPage = () => {
         });
 
         let tempWeatherDate = {};
-
+        // 解析回傳值，並製作成相對應的資料結構
         if (returnData.success) {
             const weatherElement = returnData.records.locations[0].location[0].weatherElement;
             for (let i = 0; i <= 7; i++) {
@@ -82,6 +82,7 @@ const WeatherPage = () => {
                         item.elementName !== "Wx" ? ele.elementValue[0].value : [ele.elementValue[0].value, ele.elementValue[1].value];
                 });
             });
+            // 實現loading的效果
             setTimeout(() => {
                 dispatch(setWeatherData(tempWeatherDate));
                 setCardHtml(<WeatherCard region={regionSelect} />);

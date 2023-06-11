@@ -1,3 +1,4 @@
+// 使用styled-components來建立Weather Card所需要用到的元件
 import styled from "styled-components";
 
 const theme = { width: "290px" };
@@ -63,6 +64,6 @@ export const StyleSwitch = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25px;
+    height: 40px;
     width: ${theme.width};
 `;

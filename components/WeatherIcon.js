@@ -1,3 +1,4 @@
+// 傳入數字，跟白天或晚上的資訊，可以返回相對應的天氣ICON
 import Image from "next/image";
 
 const weatherTypes = {

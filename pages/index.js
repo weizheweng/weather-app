@@ -5,7 +5,7 @@ const IndexPage = () => {
     const router = useRouter();
 
     useEffect(() => {
-        router.replace("/weather");
+        router.replace("/weather"); // 跳轉至weather頁面
     }, []);
 
     return null; // 或者可以顯示一個提示訊息等內容

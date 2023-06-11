@@ -1,8 +1,9 @@
-import { Switch, Col, Card, Spin } from "antd";
-import { useState } from "react";
-import dayjs from "dayjs";
-import weekday from "dayjs/plugin/weekday";
-import { WeatherIcon, WeatherCode2Icon } from "./WeatherIcon";
+// 使用自訂的Components來呈現天氣卡片的畫面
+import { Switch, Col, Card, Spin } from "antd"; 
+import { useState } from "react"; 
+import dayjs from "dayjs"; 
+import weekday from "dayjs/plugin/weekday"; // 引入 dayjs 的 weekday 插件
+import { WeatherIcon, WeatherCode2Icon } from "./WeatherIcon"; // 引入自訂的天氣圖示元件
 import {
     WeatherCardWrapper,
     Region,
@@ -14,15 +15,15 @@ import {
     StyleIcon,
     WeatherElement,
     StyleSwitch,
-} from "./WeatherCardComponents";
-dayjs.extend(weekday);
+} from "./WeatherCardComponents"; // 引入自訂的天氣卡片元件
+dayjs.extend(weekday); // 使用 dayjs 的 weekday 插件
 
 const WeatherCardLayout = (props) => {
-    const { currentDate, data, region } = props;
-    const [dayNightKey, setDayNightKey] = useState(Object.keys(data["day"]).length > 0 ? "day" : "night");
-    const [wData, setWData] = useState(data[dayNightKey]);
-    const [switchKey, setSwitchKey] = useState(dayNightKey === "day" ? true : false);
-    const [cardLoading, setCardLoading] = useState(false);
+    const { currentDate, data, region } = props; // 從傳入的 props 中取得相應的值
+    const [dayNightKey, setDayNightKey] = useState(Object.keys(data["day"]).length > 0 ? "day" : "night"); // 設定初始的白天/夜晚狀態
+    const [wData, setWData] = useState(data[dayNightKey]); // 根據白天/夜晚狀態設定對應的天氣資料
+    const [switchKey, setSwitchKey] = useState(dayNightKey === "day" ? true : false); // 設定初始的白天/夜晚開關狀態
+    const [cardLoading, setCardLoading] = useState(false); // 設定天氣卡片的加載狀態
 
     return (
         <Col xl={8} md={12} xs={24} align="center">
@@ -40,6 +41,7 @@ const WeatherCardLayout = (props) => {
                         height: "100%",
                     }}
                 >
+                    {/* 設定Layout */}
                     <WeatherCardWrapper>
                         <strong style={{ fontSize: 24 }}>{`${currentDate} ${dayjs(currentDate).format("dddd")}`}</strong>
                         <Region>{region}</Region>
@@ -69,7 +71,7 @@ const WeatherCardLayout = (props) => {
                             <StyleIcon>
                                 <WeatherIcon iconKey={"umbrella"} />
                             </StyleIcon>
-                            <WeatherElement>{wData["PoP12h"] !== " " ? `${wData["PoP12h"]}%` : "-"} </WeatherElement>
+                            <WeatherElement>{wData["PoP12h"] !== " " ? `${wData["PoP12h"]}%` : "-"}</WeatherElement>
                         </CurrentWeatherInfo>
                         <StyleSwitch>
                             <Switch
