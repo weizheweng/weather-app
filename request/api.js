@@ -1,18 +1,4 @@
 // 使用非同步函式 fetchApi 來處理 HTTP 請求
-export async function fetchConfig() {
-    try {
-        const response = await fetch("/api/config");
-        if (!response.ok) {
-            throw new Error("Failed to fetch config");
-        }
-        const config = await response.json();
-        return config;
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-}
-
 async function fetchApi(url, method, data = null) {
     try {
         const options = {

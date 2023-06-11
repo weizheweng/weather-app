@@ -8,6 +8,9 @@ import { setWeatherData } from "../store/reducers";
 import WeatherCard from "../components/WeatherCard";
 import * as request from "../request/api";
 
+const authorizationKey = process.env.NEXT_PUBLIC_AUTHORIZATION_KEY;
+const requestUrl = process.env.NEXT_PUBLIC_REQUEST_URL;
+
 const regionData = [
     "基隆市",
     "臺北市",
@@ -45,8 +48,6 @@ const WeatherPage = () => {
 
     const getData = async () => {
         setPageLoading(true);
-        const config = await request.fetchConfig();
-
         // 觸發動畫效果
         const animation = anime({
             targets: elementRef.current,
@@ -55,8 +56,8 @@ const WeatherPage = () => {
             easing: "easeOutExpo",
         });
 
-        const returnData = await request.getWeatherRecords(config.requestUrl, "GET", {
-            Authorization: config.authorizationKey,
+        const returnData = await request.getWeatherRecords(requestUrl, "GET", {
+            Authorization: authorizationKey,
             locationName: regionSelect,
             elementName: "T,Wx,MaxT,MinT,PoP12h,WS",
         });
