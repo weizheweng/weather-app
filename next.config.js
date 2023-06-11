@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+  trailingSlash: true, // 設定路徑是否要加上尾端的斜線
+  reactStrictMode: true, // 啟用 React 嚴格模式
+};
+
 
 module.exports = nextConfig
